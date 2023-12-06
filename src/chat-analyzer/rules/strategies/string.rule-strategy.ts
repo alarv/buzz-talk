@@ -1,6 +1,6 @@
 import { Message } from '../../types/message';
 import { RuleStrategy } from './rule-strategy';
-import { shouldMatchAllUsernames } from './strategies.util';
+import { RESERVED_ALL_USERNAMES_KEYWORD } from './constants';
 
 export class StringRuleStrategy implements RuleStrategy {
   constructor(
@@ -11,7 +11,7 @@ export class StringRuleStrategy implements RuleStrategy {
 
   matches(message: Message): boolean {
     if (
-      !shouldMatchAllUsernames(message) &&
+      !this.shouldMatchAllUsernames() &&
       message.sourceUsername !== this.sourceUsername
     ) {
       return false;
@@ -22,5 +22,9 @@ export class StringRuleStrategy implements RuleStrategy {
     }
 
     return message.content.includes(this.keyword);
+  }
+
+  private shouldMatchAllUsernames(): boolean {
+    return this.sourceUsername === RESERVED_ALL_USERNAMES_KEYWORD;
   }
 }
