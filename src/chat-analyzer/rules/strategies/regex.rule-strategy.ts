@@ -1,5 +1,5 @@
 import { RuleStrategy } from './rule-strategy';
-import { Message } from '../../types/message';
+import { Message } from '../../../types/message';
 import { RESERVED_ALL_USERNAMES_KEYWORD } from './constants';
 
 export class RegexRuleStrategy implements RuleStrategy {
@@ -19,8 +19,8 @@ export class RegexRuleStrategy implements RuleStrategy {
   }
 
   matches(message: Message): boolean {
-    console.log('1regex', this.regex);
-    console.log('1message', message);
+    // console.log('1regex', this.regex);
+    // console.log('1message', message);
 
     if (
       !this.shouldMatchAllUsernames() &&
@@ -29,15 +29,15 @@ export class RegexRuleStrategy implements RuleStrategy {
       return false;
     }
 
-    console.log('2regex', this.regex);
-    console.log('2message', message);
+    // console.log('2regex', this.regex);
+    // console.log('2message', message);
 
     if (message.publicChannelName !== this.publicChannelName) {
       return false;
     }
 
-    console.log('3regex', this.regex);
-    console.log('3message', message);
+    // console.log('3regex', this.regex);
+    // console.log('3message', message);
 
     return this.regex.test(message.content);
   }

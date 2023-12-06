@@ -1,4 +1,4 @@
-import { Message } from '../../types/message';
+import { Message } from '../../../types/message';
 import { RuleStrategy } from './rule-strategy';
 import { RESERVED_ALL_USERNAMES_KEYWORD } from './constants';
 

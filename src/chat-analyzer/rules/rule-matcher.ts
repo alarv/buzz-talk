@@ -1,5 +1,5 @@
 import { RuleStrategy } from './strategies/rule-strategy';
-import { Rule } from '../types/rule';
+import { Rule } from '../../types/rule';
 import { StringRuleStrategy } from './strategies/string.rule-strategy';
 import { RegexRuleStrategy } from './strategies/regex.rule-strategy';
 

@@ -1,6 +1,6 @@
 import { FileParser } from './file/file-parser';
 import { RuleMatcher } from './rules/rule-matcher';
-import { Message } from './types/message';
+import { Message } from '../types/message';
 
 export class ChatAnalyzer {
   private readonly fileParser = new FileParser();
@@ -10,7 +10,7 @@ export class ChatAnalyzer {
     private readonly regexEnabled: boolean,
   ) {}
 
-  public async analyze(): Promise<string[]> {
+  public async analyze(): Promise<Message[]> {
     const messages = await this.fileParser.parseChatDirectory(
       this.chatDirectory,
     );
@@ -32,11 +32,6 @@ export class ChatAnalyzer {
       return false;
     });
 
-    return matchingMessages.map((message) => this.formatMessage(message));
-  }
-
-  private formatMessage(message: Message): string {
-    // <File name>: <source_username>; <public_channel_name>|<message>
-    return `${message.fileName}: ${message.sourceUsername}; ${message.publicChannelName}|${message.content}`;
+    return matchingMessages;
   }
 }

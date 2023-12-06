@@ -1,5 +1,5 @@
-import { Rule } from '../types/rule';
-import { Message } from '../types/message';
+import { Rule } from '../../types/rule';
+import { Message } from '../../types/message';
 import * as fs from 'fs';
 import path from 'path';
 

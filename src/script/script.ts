@@ -2,6 +2,7 @@
 
 import { program } from 'commander';
 import { ChatAnalyzer } from '../chat-analyzer';
+import { MessageFormatter } from '../chat-analyzer/format/message-formatter';
 
 program
   .name('buzz-talk')
@@ -27,6 +28,9 @@ const { directory, rules } = options;
 (async () => {
   const chatAnalyzer = new ChatAnalyzer(directory, rules, options.regex);
   const matchingMessages = await chatAnalyzer.analyze();
+  const messageFormatter = new MessageFormatter();
 
-  matchingMessages.forEach((message) => console.log(message));
+  matchingMessages.forEach((message) =>
+    console.log(messageFormatter.formatMessage(message)),
+  );
 })();
