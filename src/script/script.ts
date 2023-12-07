@@ -18,7 +18,7 @@ program
     '-r, --rules <rules>',
     'A path to a configuration (rules) file that describes the messages pattern to track',
   )
-  .option('--regex');
+  .option('--regex', 'Allow regexes when matching username and channel rule');
 
 program.parse();
 
