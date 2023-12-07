@@ -20,7 +20,7 @@ This project includes both a command-line interface (CLI) and a web interface fo
     - Built with Node.js.
     - Bundled using Webpack for simplicity and familiarity.
     - Command to build: `npm run script:build`.
-    - Command to execute: `./dist/script.js -d dist/inputs -r "dist/rules-part 2"`. or via the npm script `npm run script -- -d dist/inputs -r "dist/rules-part 2"
+    - Command to execute: `./dist/script.js --help` or `./dist/script.js -d dist/inputs -r "dist/rules-part 2"` or via the npm script `npm run script -- -d dist/inputs -r "dist/rules-part 2"`
 
 2. **Regex Rules Flag**:
     - The `--regex` flag allows the use of regex patterns in the rules file for advanced message filtering.
