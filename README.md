@@ -48,10 +48,12 @@ This project includes both a command-line interface (CLI) and a web interface fo
 To set up the project locally, follow these steps:
 
 1. Clone the repository to your local machine.
-2. Navigate to the project directory and run `npm install` to install dependencies.
-3. To build the CLI tool, run `npm run script:build`.
-4. Execute the CLI with `node index.js` followed by the required arguments.
-5. To start the web interface, run `npm run dev` and navigate to `http://localhost:3000` in your web browser.
+2. If you're using nvm run `nvm use` to use the version defined in the .nvmrc (`lts/hydrogen
+   `)
+3. Navigate to the project directory and run `npm install` to install dependencies.
+4. To build the CLI tool, run `npm run script:build`.
+5. Execute the CLI with `node index.js` followed by the required arguments.
+6. To start the web interface, run `npm run dev` and navigate to `http://localhost:3000` in your web browser.
 
 ## Testing
 
