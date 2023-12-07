@@ -12,7 +12,7 @@ export class RegexRuleStrategy implements RuleStrategy {
     try {
       this.regex = new RegExp(keyword);
     } catch (e) {
-      console.error('invalid regex!');
+      console.error('invalid regex:', keyword);
       // an invalid regex was entered like '*'
       this.regex = new RegExp('(?!x)x'); // Regex that matches nothing
     }
