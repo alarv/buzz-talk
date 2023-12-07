@@ -38,7 +38,7 @@ export default function MessageList(props: MessageListProps) {
       {props.channelFilter && (
         <div className="pl-2">You searched for: {props.channelFilter}</div>
       )}
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap flex-row gap-4 ">
         {messages.map((message: Message, index: number) => (
           <MessageCard key={index} message={message} />
         ))}

@@ -8,7 +8,7 @@ interface MessageCardProps {
 
 export default function MessageCard(props: MessageCardProps) {
   return (
-    <div className="p-3 w-56 h-52 m-4 h-full" style={{ background: '#DDF7FF' }}>
+    <div className="p-3 w-56 h-56 " style={{ background: '#DDF7FF' }}>
       {props.message && (
         <>
           <p>Channel: {props.message.publicChannelName}</p>
