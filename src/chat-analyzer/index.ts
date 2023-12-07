@@ -14,15 +14,14 @@ export class ChatAnalyzer {
     const messages = await this.fileParser.parseChatDirectory(
       this.chatDirectory,
     );
-    const ruleMatcher = new RuleMatcher(this.regexEnabled);
-
     const rules = await this.fileParser.parseRuleFile(this.ruleFile);
 
+    const ruleMatcher = new RuleMatcher(this.regexEnabled);
     const ruleStrategies = rules.map((rule) =>
       ruleMatcher.createRuleStrategyFromRule(rule),
     );
 
-    const matchingMessages = messages.filter((message) => {
+    return messages.filter((message) => {
       for (const ruleStrategy of ruleStrategies) {
         if (ruleStrategy.matches(message)) {
           return true;
@@ -31,7 +30,5 @@ export class ChatAnalyzer {
 
       return false;
     });
-
-    return matchingMessages;
   }
 }

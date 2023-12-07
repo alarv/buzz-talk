@@ -1,8 +1,7 @@
-import path from 'path';
-import webpack from 'webpack';
-import ShebangPlugin from 'webpack-shebang-plugin';
+const path = require('path');
+const webpack = require('webpack');
 
-const config: webpack.Configuration = {
+module.exports = {
   mode: 'production',
   entry: './src/script/script.ts',
   target: 'node',
@@ -24,11 +23,11 @@ const config: webpack.Configuration = {
   resolve: {
     extensions: ['.ts', '.js'],
   },
-  plugins: [new ShebangPlugin()],
+  plugins: [
+    new webpack.BannerPlugin({ banner: '#!/usr/bin/env node', raw: true }),
+  ],
   output: {
     filename: 'script.js',
     path: path.resolve(__dirname, 'dist'),
   },
 };
-
-export default config;

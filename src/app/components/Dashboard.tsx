@@ -9,7 +9,7 @@ export default function Dashboard() {
 
   return (
     <>
-      <header className="grid grid-cols-6 grid-rows-2 py-4 pl-2 gap-4 sm:pl-0">
+      <header className="grid grid-cols-6 py-4 pl-2 gap-4">
         <div className="col-span-3">
           <div className="row-span-1">
             <h1 className="text-3xl font-semibold col-span-3 py-3">

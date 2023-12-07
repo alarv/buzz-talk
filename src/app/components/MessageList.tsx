@@ -35,10 +35,14 @@ export default function MessageList(props: MessageListProps) {
 
   return (
     <div className="message-list">
-      <div>{props.channelFilter}</div>
-      {messages.map((message: Message, index: number) => (
-        <MessageCard key={index} message={message} />
-      ))}
+      {props.channelFilter && (
+        <div className="pl-2">You searched for: {props.channelFilter}</div>
+      )}
+      <div className="flex flex-wrap">
+        {messages.map((message: Message, index: number) => (
+          <MessageCard key={index} message={message} />
+        ))}
+      </div>
     </div>
   );
 }

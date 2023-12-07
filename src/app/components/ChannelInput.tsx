@@ -12,7 +12,8 @@ export default function ChannelInput(props: ChannelInputProps) {
       value={props.value}
       onChange={(e) => props.onChange(e.target.value)}
       placeholder="Channel input"
-      className="w-full h-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-5"
+      className="w-full h-full bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-5"
+      style={{ color: '#CCCCCC' }}
     />
   );
 }

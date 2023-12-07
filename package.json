@@ -8,8 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
-    "script:build": "webpack --config webpack.script.config.ts && chmod +x dist/script.js",
-    "script:watch": "webpack --config webpack.script.config.ts --watch"
+    "script:build": "webpack --config webpack.script.config.js && chmod +x dist/script.js",
+    "script:watch": "webpack --config webpack.script.config.js --watch"
   },
   "dependencies": {
     "commander": "^11.1.0",
@@ -39,7 +39,6 @@
     "ts-node": "^10.9.1",
     "typescript": "^5",
     "webpack": "^5.89.0",
-    "webpack-cli": "^5.1.4",
-    "webpack-shebang-plugin": "^1.1.8"
+    "webpack-cli": "^5.1.4"
   }
 }

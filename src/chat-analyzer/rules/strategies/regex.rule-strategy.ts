@@ -3,25 +3,29 @@ import { Message } from '../../../types/message';
 import { RESERVED_ALL_USERNAMES_KEYWORD } from './constants';
 
 export class RegexRuleStrategy implements RuleStrategy {
-  private readonly regex: RegExp;
+  private readonly channelRegex: RegExp;
+  private readonly keywordRegex: RegExp;
   constructor(
     readonly sourceUsername: string,
     readonly publicChannelName: string,
     readonly keyword: string,
   ) {
     try {
-      this.regex = new RegExp(keyword);
+      this.channelRegex = new RegExp(publicChannelName);
+      this.keywordRegex = new RegExp(keyword);
     } catch (e) {
-      console.error('invalid regex:', keyword);
+      console.error(
+        `invalid regex. keyword: ${keyword}, publicChannelName: ${publicChannelName}`,
+      );
       // an invalid regex was entered like '*'
-      this.regex = new RegExp('(?!x)x'); // Regex that matches nothing
+
+      const nonMatchingRegex = new RegExp('(?!x)x'); // Regex that matches nothing
+      this.keywordRegex = nonMatchingRegex;
+      this.channelRegex = nonMatchingRegex;
     }
   }
 
   matches(message: Message): boolean {
-    // console.log('1regex', this.regex);
-    // console.log('1message', message);
-
     if (
       !this.shouldMatchAllUsernames() &&
       message.sourceUsername !== this.sourceUsername
@@ -29,17 +33,14 @@ export class RegexRuleStrategy implements RuleStrategy {
       return false;
     }
 
-    // console.log('2regex', this.regex);
-    // console.log('2message', message);
-
-    if (message.publicChannelName !== this.publicChannelName) {
+    if (
+      message.publicChannelName !== this.publicChannelName &&
+      !this.channelRegex.test(message.publicChannelName)
+    ) {
       return false;
     }
 
-    // console.log('3regex', this.regex);
-    // console.log('3message', message);
-
-    return this.regex.test(message.content);
+    return this.keywordRegex.test(message.content);
   }
 
   private shouldMatchAllUsernames(): boolean {
